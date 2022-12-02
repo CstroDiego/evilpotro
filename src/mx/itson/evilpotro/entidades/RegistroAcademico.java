@@ -4,6 +4,14 @@
  */
 package mx.itson.evilpotro.entidades;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import mx.itson.evilpotro.persistencia.Conexion;
+
 /**
  *
  * @author julio
@@ -14,7 +22,29 @@ public class RegistroAcademico {
     private Curso curso;
     private int calificacion;
     private String cicloLectivo;
-
+    
+    public static List<RegistroAcademico> obtenerPorId(int id) {
+        List<RegistroAcademico> registrosAcademicos = new ArrayList<>();
+        try {
+            Connection conexion = Conexion.obtener();
+            String consulta = "SELECT * FROM alumno WHERE id = ?";
+            PreparedStatement statement = conexion.prepareStatement(consulta);
+            statement.setInt(1, id);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                RegistroAcademico registroAcademico = new RegistroAcademico();
+                registroAcademico.getAlumno().setId(resultSet.getInt("id"));
+                registroAcademico.getCurso().setTitulo(resultSet.getNString("cursos"));
+                registroAcademico.setCalificacion(resultSet.getInt("calificacion"));
+                registroAcademico.setCicloLectivo(resultSet.getString("cicloLectivo"));
+            registrosAcademicos.add(registroAcademico);
+            }
+            conexion.close();
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+        return registrosAcademicos;
+    }
     /**
      * @return the alumno
      */

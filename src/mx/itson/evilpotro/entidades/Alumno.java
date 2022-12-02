@@ -96,7 +96,7 @@ public class Alumno {
         }
         return resultado;
     }
-
+    
     public int getId() {
         return id;
     }
