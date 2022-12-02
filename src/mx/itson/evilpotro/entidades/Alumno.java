@@ -3,17 +3,15 @@ package mx.itson.evilpotro.entidades;
 import mx.itson.evilpotro.persistencia.Conexion;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.List;
-import java.sql.PreparedStatement;
 import java.util.Date;
-//hola
+import java.util.List;
 
 public class Alumno {
 
- 
     private int id;
     private String nombre;
     private String apellidos;
@@ -22,7 +20,6 @@ public class Alumno {
     private String campus;
     private Date fechaNacimiento;
     private String carrera;
-    
 
     public static List<Alumno> obtenerTodos() {
         List<Alumno> alumnos = new ArrayList<>();
@@ -39,6 +36,8 @@ public class Alumno {
                 alumno.setEmail(resultSet.getString("email"));
                 alumno.setTelefono(resultSet.getLong("telefono"));
                 alumno.setCampus(resultSet.getString("campus"));
+                alumno.setFechaNacimiento(resultSet.getDate("fechaNacimiento"));
+                alumno.setCarrera(resultSet.getString("carrera"));
                 alumnos.add(alumno);
             }
             conexion.close();
@@ -61,8 +60,10 @@ public class Alumno {
                 alumno.setNombre(resultSet.getString("nombre"));
                 alumno.setApellidos(resultSet.getString("apellidos"));
                 alumno.setEmail(resultSet.getString("email"));
-                alumno.setCampus(resultSet.getString("campus"));
                 alumno.setTelefono(resultSet.getLong("telefono"));
+                alumno.setCampus(resultSet.getString("campus"));
+                alumno.setFechaNacimiento(resultSet.getDate("fechaNacimiento"));
+                alumno.setCarrera(resultSet.getString("carrera"));
             }
             conexion.close();
         } catch (Exception e) {
@@ -71,22 +72,21 @@ public class Alumno {
         return alumno;
     }
 
-    public boolean editar(int id, String nombre, String apellidos, String email, Long telefono, String campus, Date fechaNacimiento, String carrera ) {
+    public static boolean editar(int id, String nombre, String apellidos, String email, Long telefono, String campus, Date fechaNacimiento, String carrera) {
         boolean resultado = false;
         try {
-            Connection conexion = new Conexion().obtener();
+            Connection conexion = Conexion.obtener();
             String consulta = "UPDATE alumno SET nombre = ?, apellidos = ?, email = ?, telefono = ?, campus = ?, fechaNacimiento = ?, carrera = ? WHERE id = ?";
             PreparedStatement statement = conexion.prepareStatement(consulta);
             statement.setString(1, nombre);
             statement.setString(2, apellidos);
             statement.setString(3, email);
             statement.setLong(4, telefono);
-            statement.setString(5,campus);
+            statement.setString(5, campus);
             statement.setDate(6, (java.sql.Date) fechaNacimiento);
             statement.setString(7, carrera);
             statement.setInt(8, id);
             statement.execute();
-
             resultado = statement.getUpdateCount() > 0;
             conexion.close();
 
@@ -144,7 +144,8 @@ public class Alumno {
     public void setCampus(String campus) {
         this.campus = campus;
     }
-       /**
+
+    /**
      * @return the fechaNacimiento
      */
     public Date getFechaNacimiento() {
