@@ -27,7 +27,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                      <Component id="jButton1" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnGuardar" alignment="1" min="-2" max="-2" attributes="0"/>
                       <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
                           <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -35,20 +35,20 @@
                           <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="txtNombre" alignment="0" pref="348" max="32767" attributes="0"/>
                           <Component id="txtApellidos" alignment="0" max="32767" attributes="0"/>
-                          <Component id="txtIdcia" alignment="0" max="32767" attributes="0"/>
-                          <Component id="txtApodo" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtEmail" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtTelefono" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
                       <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtNombre1" alignment="0" max="32767" attributes="0"/>
-                      <Component id="txtApellidos1" alignment="0" min="-2" pref="348" max="-2" attributes="0"/>
+                      <Component id="txtCampus" alignment="0" max="32767" attributes="0"/>
+                      <Component id="txtFechaNacimiento" alignment="0" min="-2" pref="348" max="-2" attributes="0"/>
                   </Group>
                   <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtNombre2" alignment="0" min="-2" pref="348" max="-2" attributes="0"/>
+                  <Component id="txtCarrera" alignment="0" min="-2" pref="348" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="42" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -66,26 +66,26 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="txtIdcia" min="-2" max="-2" attributes="0"/>
+              <Component id="txtEmail" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
               <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="txtApodo" min="-2" max="-2" attributes="0"/>
+              <Component id="txtTelefono" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="txtNombre1" min="-2" max="-2" attributes="0"/>
+              <Component id="txtCampus" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
-              <Component id="txtApellidos1" min="-2" max="-2" attributes="0"/>
+              <Component id="txtFechaNacimiento" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="txtNombre2" min="-2" max="-2" attributes="0"/>
+              <Component id="txtCarrera" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
-              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+              <Component id="btnGuardar" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -95,9 +95,9 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtApellidos">
     </Component>
-    <Component class="javax.swing.JTextField" name="txtIdcia">
+    <Component class="javax.swing.JTextField" name="txtEmail">
     </Component>
-    <Component class="javax.swing.JTextField" name="txtApodo">
+    <Component class="javax.swing.JTextField" name="txtTelefono">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
@@ -119,17 +119,17 @@
         <Property name="text" type="java.lang.String" value="Telefono:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="btnGuardar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Guardar"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGuardarActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtNombre1">
+    <Component class="javax.swing.JTextField" name="txtCampus">
     </Component>
-    <Component class="javax.swing.JTextField" name="txtApellidos1">
+    <Component class="javax.swing.JTextField" name="txtFechaNacimiento">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel5">
       <Properties>
@@ -141,9 +141,9 @@
         <Property name="text" type="java.lang.String" value="Fecha de nacimiento:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtNombre2">
+    <Component class="javax.swing.JTextField" name="txtCarrera">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNombre2ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCarreraActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel7">
