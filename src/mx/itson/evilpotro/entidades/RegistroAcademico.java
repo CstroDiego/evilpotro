@@ -14,7 +14,6 @@ public class RegistroAcademico {
     private Curso curso;
     private int calificacion;
     private String cicloLectivo;
-    private int aprobado;
 
     /**
      * @return the alumno
@@ -72,18 +71,5 @@ public class RegistroAcademico {
         this.cicloLectivo = cicloLectivo;
     }
 
-    /**
-     * @return the aprobado
-     */
-    public int getAprobado() {
-        return aprobado;
-    }
-
-    /**
-     * @param aprobado the aprobado to set
-     */
-    public void setAprobado(int aprobado) {
-        this.aprobado = aprobado;
-    }
 
 }
