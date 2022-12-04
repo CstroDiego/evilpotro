@@ -4,9 +4,16 @@
  */
 package mx.itson.evilpotro.entidades;
 
+import mx.itson.evilpotro.persistencia.Conexion;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
- *
- * @author julio
+ * The type Curso.
  */
 public class Curso {
 
@@ -17,6 +24,62 @@ public class Curso {
     private String carrera;
 
     /**
+     * Obtener por id curso.
+     *
+     * @param id the id
+     *
+     * @return the curso
+     */
+    public static Curso obtenerPorId(int id) {
+      Curso curso = new Curso();
+        try {
+            Connection conexion = Conexion.obtener();
+            String consulta = "SELECT * FROM curso WHERE id = ?";
+             java.sql.PreparedStatement statement = conexion.prepareStatement(consulta);
+            statement.setInt(1, id);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                curso.setId(resultSet.getInt("id"));
+                curso.setTitulo(resultSet.getString("titulo"));
+                curso.setSemestre(resultSet.getInt("semestre"));
+                curso.setBloque(resultSet.getString("bloque"));
+                curso.setCarrera(resultSet.getString("carrera"));
+            }
+            conexion.close();
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+        return curso;
+    }
+
+    /**
+     * Obtener total materias int.
+     *
+     * @param carrera the carrera
+     *
+     * @return the int
+     */
+    public static int obtenerTotalMaterias(String carrera){
+        int totalMaterias = 0;
+        try {
+            Connection conexion = Conexion.obtener();
+            String consulta = "SELECT COUNT(*) AS total FROM curso WHERE carrera = ?";
+            java.sql.PreparedStatement statement = conexion.prepareStatement(consulta);
+            statement.setString(1, carrera);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                totalMaterias = resultSet.getInt("total");
+            }
+            conexion.close();
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+        return totalMaterias;
+    }
+
+    /**
+     * Gets id.
+     *
      * @return the id
      */
     public int getId() {
@@ -24,13 +87,17 @@ public class Curso {
     }
 
     /**
-     * @param id the id to set
+     * Sets id.
+     *
+     * @param id the id
      */
     public void setId(int id) {
         this.id = id;
     }
 
     /**
+     * Gets titulo.
+     *
      * @return the titulo
      */
     public String getTitulo() {
@@ -38,13 +105,17 @@ public class Curso {
     }
 
     /**
-     * @param titulo the titulo to set
+     * Sets titulo.
+     *
+     * @param titulo the titulo
      */
     public void setTitulo(String titulo) {
         this.titulo = titulo;
     }
 
     /**
+     * Gets semestre.
+     *
      * @return the semestre
      */
     public int getSemestre() {
@@ -52,13 +123,17 @@ public class Curso {
     }
 
     /**
-     * @param semestre the semestre to set
+     * Sets semestre.
+     *
+     * @param semestre the semestre
      */
     public void setSemestre(int semestre) {
         this.semestre = semestre;
     }
 
     /**
+     * Gets bloque.
+     *
      * @return the bloque
      */
     public String getBloque() {
@@ -66,13 +141,17 @@ public class Curso {
     }
 
     /**
-     * @param bloque the bloque to set
+     * Sets bloque.
+     *
+     * @param bloque the bloque
      */
     public void setBloque(String bloque) {
         this.bloque = bloque;
     }
 
     /**
+     * Gets carrera.
+     *
      * @return the carrera
      */
     public String getCarrera() {
@@ -80,7 +159,9 @@ public class Curso {
     }
 
     /**
-     * @param carrera the carrera to set
+     * Sets carrera.
+     *
+     * @param carrera the carrera
      */
     public void setCarrera(String carrera) {
         this.carrera = carrera;

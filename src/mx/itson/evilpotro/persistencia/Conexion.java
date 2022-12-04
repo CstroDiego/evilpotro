@@ -3,12 +3,15 @@ package mx.itson.evilpotro.persistencia;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
+/**
+ * The type Conexion.
+ */
 public class Conexion {
 
     /**
-     * Obtiene una conexión a la base de datos utilizando los parametros de conexión
+     * Obtener connection.
      *
-     * @return La conexión a la base de datos
+     * @return the connection
      */
     public static Connection obtener() {
         Connection conexion = null;

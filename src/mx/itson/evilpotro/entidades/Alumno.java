@@ -10,6 +10,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * The type Alumno.
+ */
 public class Alumno {
 
     private int id;
@@ -21,6 +24,11 @@ public class Alumno {
     private Date fechaNacimiento;
     private String carrera;
 
+    /**
+     * Obtener todos list.
+     *
+     * @return the list
+     */
     public static List<Alumno> obtenerTodos() {
         List<Alumno> alumnos = new ArrayList<>();
         try {
@@ -47,6 +55,13 @@ public class Alumno {
         return alumnos;
     }
 
+    /**
+     * Obtener por id alumno.
+     *
+     * @param id the id
+     *
+     * @return the alumno
+     */
     public static Alumno obtenerPorId(int id) {
         Alumno alumno = new Alumno();
         try {
@@ -56,7 +71,6 @@ public class Alumno {
             statement.setInt(1, id);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
-                alumno.setId(resultSet.getInt("id"));
                 alumno.setNombre(resultSet.getString("nombre"));
                 alumno.setApellidos(resultSet.getString("apellidos"));
                 alumno.setEmail(resultSet.getString("email"));
@@ -72,7 +86,21 @@ public class Alumno {
         return alumno;
     }
 
-    public static boolean editar(int id, String nombre, String apellidos, String email, Long telefono, String campus, Date fechaNacimiento, String carrera) {
+    /**
+     * Editar boolean.
+     *
+     * @param id              the id
+     * @param nombre          the nombre
+     * @param apellidos       the apellidos
+     * @param email           the email
+     * @param telefono        the telefono
+     * @param campus          the campus
+     * @param fechaNacimiento the fecha nacimiento
+     * @param carrera         the carrera
+     *
+     * @return the boolean
+     */
+    public static boolean editar(int id, String nombre, String apellidos, String email, Long telefono, String campus, String fechaNacimiento, String carrera) {
         boolean resultado = false;
         try {
             Connection conexion = Conexion.obtener();
@@ -83,7 +111,7 @@ public class Alumno {
             statement.setString(3, email);
             statement.setLong(4, telefono);
             statement.setString(5, campus);
-            statement.setDate(6, (java.sql.Date) fechaNacimiento);
+            statement.setString(6, fechaNacimiento);
             statement.setString(7, carrera);
             statement.setInt(8, id);
             statement.execute();
@@ -96,70 +124,161 @@ public class Alumno {
         }
         return resultado;
     }
-    
+
+    /**
+     * Obtener carrera string.
+     *
+     * @param id the id
+     *
+     * @return the string
+     */
+    public static String obtenerCarrera(int id) {
+        String carrera = "";
+        try {
+            Connection conexion = Conexion.obtener();
+            String consulta = "SELECT carrera FROM alumno WHERE id = ?";
+            PreparedStatement statement = conexion.prepareStatement(consulta);
+            statement.setInt(1, id);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                carrera = resultSet.getString("carrera");
+            }
+            conexion.close();
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+        return carrera;
+    }
+
+    /**
+     * Gets id.
+     *
+     * @return the id
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     * Sets id.
+     *
+     * @param id the id
+     */
     public void setId(int id) {
         this.id = id;
     }
 
+    /**
+     * Gets nombre.
+     *
+     * @return the nombre
+     */
     public String getNombre() {
         return nombre;
     }
 
+    /**
+     * Sets nombre.
+     *
+     * @param nombre the nombre
+     */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
+    /**
+     * Gets apellidos.
+     *
+     * @return the apellidos
+     */
     public String getApellidos() {
         return apellidos;
     }
 
+    /**
+     * Sets apellidos.
+     *
+     * @param apellidos the apellidos
+     */
     public void setApellidos(String apellidos) {
         this.apellidos = apellidos;
     }
 
+    /**
+     * Gets email.
+     *
+     * @return the email
+     */
     public String getEmail() {
         return email;
     }
 
+    /**
+     * Sets email.
+     *
+     * @param email the email
+     */
     public void setEmail(String email) {
         this.email = email;
     }
 
+    /**
+     * Gets telefono.
+     *
+     * @return the telefono
+     */
     public long getTelefono() {
         return telefono;
     }
 
+    /**
+     * Sets telefono.
+     *
+     * @param telefono the telefono
+     */
     public void setTelefono(long telefono) {
         this.telefono = telefono;
     }
 
+    /**
+     * Gets campus.
+     *
+     * @return the campus
+     */
     public String getCampus() {
         return campus;
     }
 
+    /**
+     * Sets campus.
+     *
+     * @param campus the campus
+     */
     public void setCampus(String campus) {
         this.campus = campus;
     }
 
     /**
-     * @return the fechaNacimiento
+     * Gets fecha nacimiento.
+     *
+     * @return the fecha nacimiento
      */
     public Date getFechaNacimiento() {
         return fechaNacimiento;
     }
 
     /**
-     * @param fechaNacimiento the fechaNacimiento to set
+     * Sets fecha nacimiento.
+     *
+     * @param fechaNacimiento the fecha nacimiento
      */
     public void setFechaNacimiento(Date fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 
     /**
+     * Gets carrera.
+     *
      * @return the carrera
      */
     public String getCarrera() {
@@ -167,7 +286,9 @@ public class Alumno {
     }
 
     /**
-     * @param carrera the carrera to set
+     * Sets carrera.
+     *
+     * @param carrera the carrera
      */
     public void setCarrera(String carrera) {
         this.carrera = carrera;
