@@ -120,7 +120,7 @@ public class RegistroAcademico {
      *
      * @return the int
      */
-    public static int calcularReprobadas (int id){
+    public static int calcularReprobadas(int id) {
         int reprobadas = 0;
         try {
             Connection conexion = Conexion.obtener();

@@ -31,14 +31,14 @@ public class AlumnoListado extends javax.swing.JFrame {
         modelo.setRowCount(0);
         for (Alumno alumno : alumnos) {
             modelo.addRow(new Object[]{
-                alumno.getId(),
-                alumno.getNombre(),
-                alumno.getApellidos(),
-                alumno.getEmail(),
-                alumno.getTelefono(),
-                alumno.getCampus(),
-                alumno.getFechaNacimiento(),
-                alumno.getCarrera()
+                    alumno.getId(),
+                    alumno.getNombre(),
+                    alumno.getApellidos(),
+                    alumno.getEmail(),
+                    alumno.getTelefono(),
+                    alumno.getCampus(),
+                    alumno.getFechaNacimiento(),
+                    alumno.getCarrera()
             });
         }
     }
@@ -69,15 +69,15 @@ public class AlumnoListado extends javax.swing.JFrame {
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 10, -1, -1));
 
         tblAlumnos.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "ID", "Nombre", "Apellodos", "Email", "Telefono", "Campus", "Fecha de nacimiento", "Carrera"
-            }
+                new Object[][]{
+                        {null, null, null, null, null, null, null, null},
+                        {null, null, null, null, null, null, null, null},
+                        {null, null, null, null, null, null, null, null},
+                        {null, null, null, null, null, null, null, null}
+                },
+                new String[]{
+                        "ID", "Nombre", "Apellodos", "Email", "Telefono", "Campus", "Fecha de nacimiento", "Carrera"
+                }
         ));
         jScrollPane1.setViewportView(tblAlumnos);
 
@@ -108,12 +108,12 @@ public class AlumnoListado extends javax.swing.JFrame {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 890, Short.MAX_VALUE)
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 890, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();

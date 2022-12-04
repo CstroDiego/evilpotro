@@ -13,6 +13,6 @@ public class Main {
      * @param args the input arguments
      */
     public static void main(String[] args) {
-    Alumno.obtenerTodos().forEach(System.out::println);
+        Alumno.obtenerTodos().forEach(System.out::println);
     }
 }

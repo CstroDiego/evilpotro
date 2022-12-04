@@ -8,9 +8,6 @@ import mx.itson.evilpotro.persistencia.Conexion;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * The type Curso.
@@ -31,11 +28,11 @@ public class Curso {
      * @return the curso
      */
     public static Curso obtenerPorId(int id) {
-      Curso curso = new Curso();
+        Curso curso = new Curso();
         try {
             Connection conexion = Conexion.obtener();
             String consulta = "SELECT * FROM curso WHERE id = ?";
-             java.sql.PreparedStatement statement = conexion.prepareStatement(consulta);
+            java.sql.PreparedStatement statement = conexion.prepareStatement(consulta);
             statement.setInt(1, id);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
@@ -59,7 +56,7 @@ public class Curso {
      *
      * @return the int
      */
-    public static int obtenerTotalMaterias(String carrera){
+    public static int obtenerTotalMaterias(String carrera) {
         int totalMaterias = 0;
         try {
             Connection conexion = Conexion.obtener();

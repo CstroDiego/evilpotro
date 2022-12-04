@@ -58,9 +58,9 @@ public class ProgresoAcademico extends javax.swing.JDialog {
                 modelo.setRowCount(0);
                 for (RegistroAcademico registro : registrosAcademicos) {
                     modelo.addRow(new Object[]{
-                        registro.getCurso().getSemestre(),
-                        registro.getCurso().getTitulo(),
-                        registro.getCalificacion(),});
+                            registro.getCurso().getSemestre(),
+                            registro.getCurso().getTitulo(),
+                            registro.getCalificacion(),});
                 }
             } catch (Exception e) {
                 System.out.println("Error: " + e.getMessage());
@@ -105,15 +105,15 @@ public class ProgresoAcademico extends javax.swing.JDialog {
 
         tblMaterias.setAutoCreateRowSorter(true);
         tblMaterias.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "Semestre", "Materia", "Calificación"
-            }
+                new Object[][]{
+                        {null, null, null},
+                        {null, null, null},
+                        {null, null, null},
+                        {null, null, null}
+                },
+                new String[]{
+                        "Semestre", "Materia", "Calificación"
+                }
         ));
         jScrollPane1.setViewportView(tblMaterias);
 
