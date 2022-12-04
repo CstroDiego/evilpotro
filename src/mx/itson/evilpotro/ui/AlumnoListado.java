@@ -24,6 +24,7 @@ public class AlumnoListado extends javax.swing.JFrame {
 
     /**
      * Cargar.
+     * Cargara los datos de la base de datos en los campos correspondientes
      */
     public void cargar() {
         List<Alumno> alumnos = Alumno.obtenerTodos();

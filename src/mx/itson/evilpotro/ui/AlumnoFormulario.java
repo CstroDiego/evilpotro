@@ -24,7 +24,7 @@ public class AlumnoFormulario extends javax.swing.JDialog {
      *
      * @param parent the parent
      * @param modal  the modal
-     * @param id     the id
+     * @param id     the id es un numero entero asignado para el alumno 
      */
     public AlumnoFormulario(java.awt.Frame parent, boolean modal, int id) {
         super(parent, modal);
@@ -36,6 +36,7 @@ public class AlumnoFormulario extends javax.swing.JDialog {
 
     /**
      * Cargar formulario.
+     * Cargara los datos del alumno seleccionado
      */
     public void cargarFormulario() {
         System.out.println("Cargando formulario con id: " + id);

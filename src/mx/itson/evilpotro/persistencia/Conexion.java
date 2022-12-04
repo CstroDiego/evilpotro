@@ -10,7 +10,7 @@ public class Conexion {
 
     /**
      * Obtener connection.
-     *
+     * Este metodo genera una conexion de la base de datos y java
      * @return the connection
      */
     public static Connection obtener() {

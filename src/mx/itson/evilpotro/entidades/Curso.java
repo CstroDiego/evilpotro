@@ -23,8 +23,8 @@ public class Curso {
     /**
      * Obtener por id curso.
      *
-     * @param id the id
-     *
+     * @param id the id es un numero entero asignado para el alumno 
+     * Este metodo obtendra los datos relacionados con el progreso academico del alumno
      * @return the curso
      */
     public static Curso obtenerPorId(int id) {
@@ -52,8 +52,8 @@ public class Curso {
     /**
      * Obtener total materias int.
      *
-     * @param carrera the carrera
-     *
+     * @param carrera the carrera es una cadena de texto que dara todad las materias
+     * Este metod obtendra las materias que tiene el curso
      * @return the int
      */
     public static int obtenerTotalMaterias(String carrera) {

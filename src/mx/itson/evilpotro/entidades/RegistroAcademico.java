@@ -25,8 +25,8 @@ public class RegistroAcademico {
     /**
      * Obtener clases por id list.
      *
-     * @param id the id
-     *
+     * @param id the id es un numero entero asignado para el alumno 
+     * Este metodo obtendra los datos del alumno relacionados con su progreso academico
      * @return the list
      */
     public static List<RegistroAcademico> obtenerClasesPorId(int id) {
@@ -55,8 +55,8 @@ public class RegistroAcademico {
     /**
      * Calcular promedio double.
      *
-     * @param id the id
-     *
+     * @param id the id es un numero entero asignado para el alumno 
+     * Este metodo obtiene el promedio del alumno
      * @return the double
      */
     public static double calcularPromedio(int id) {
@@ -86,8 +86,8 @@ public class RegistroAcademico {
     /**
      * Calcular progreso double.
      *
-     * @param id the id
-     *
+     * @param id the id es un numero entero asignado para el alumno 
+     * Este metodo obtiene el progreso total del alumno
      * @return the double
      */
     public static double calcularProgreso(int id) {
@@ -116,8 +116,8 @@ public class RegistroAcademico {
     /**
      * Calcular reprobadas int.
      *
-     * @param id the id
-     *
+     * @param id the id es un numero entero asignado para el alumno 
+     * Este metodo obtiene el total de reprobadas
      * @return the int
      */
     public static int calcularReprobadas(int id) {

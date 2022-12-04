@@ -24,9 +24,10 @@ public class ProgresoAcademico extends javax.swing.JDialog {
     /**
      * Instantiates a new Progreso academico.
      *
-     * @param parent the parent
-     * @param modal  the modal
-     * @param id     the id
+     * @param parent the parent 
+     * @param modal  the modal 
+     * @param id     the id es un numero entero asignado para el alumno 
+     * El matodo permite llenar los campos del dialog
      */
     public ProgresoAcademico(java.awt.Frame parent, boolean modal, int id) {
         super(parent, modal);
@@ -37,6 +38,7 @@ public class ProgresoAcademico extends javax.swing.JDialog {
 
     /**
      * Cargar campos.
+     *  Obtendra la informacion para los campos del dialog
      */
     public void cargarCampos() {
         System.out.println("Hola");

@@ -12,6 +12,7 @@ import java.util.List;
 
 /**
  * The type Alumno.
+ * 
  */
 public class Alumno {
 
@@ -26,7 +27,7 @@ public class Alumno {
 
     /**
      * Obtener todos list.
-     *
+     * Este metodo se encarga de obtener todos los datos de la base de datos
      * @return the list
      */
     public static List<Alumno> obtenerTodos() {
@@ -57,9 +58,9 @@ public class Alumno {
 
     /**
      * Obtener por id alumno.
-     *
-     * @param id the id
-     *
+     * 
+     * @param id the id es el numero asignado para el alumno
+     * Este metodo obtendra todos los datos del alumno seleccionado
      * @return the alumno
      */
     public static Alumno obtenerPorId(int id) {
@@ -89,15 +90,15 @@ public class Alumno {
     /**
      * Editar boolean.
      *
-     * @param id              the id
-     * @param nombre          the nombre
-     * @param apellidos       the apellidos
-     * @param email           the email
-     * @param telefono        the telefono
-     * @param campus          the campus
-     * @param fechaNacimiento the fecha nacimiento
-     * @param carrera         the carrera
-     *
+     * @param id              the id es un numero entero asignado para el alumno 
+     * @param nombre          the nombre es una cadena de texto con el nombre del alumno
+     * @param apellidos       the apellidos es una cadena de texto con el apellido del alumno
+     * @param email           the email es una cadena de texto con el email del alumno
+     * @param telefono        the telefono es un tipo de dato entero que dara el telefono del alumno 
+     * @param campus          the campus es una cadena de texto que dara el nombre del campus
+     * @param fechaNacimiento the fecha nacimiento es una cadena de texto que dara la fecha de nacimiento del alumno
+     * @param carrera         the carrera es una cadena de texto que dara el nombre de la carrera que cursa el alumno
+     * Este metodo obtendra todos los datos del alumno seleccionado
      * @return the boolean
      */
     public static boolean editar(int id, String nombre, String apellidos, String email, Long telefono, String campus, String fechaNacimiento, String carrera) {
@@ -128,8 +129,8 @@ public class Alumno {
     /**
      * Obtener carrera string.
      *
-     * @param id the id
-     *
+     * @param id the id es un numero entero asignado para el alumno  
+     * Este metodo obtendra la carrera del alumno
      * @return the string
      */
     public static String obtenerCarrera(int id) {
