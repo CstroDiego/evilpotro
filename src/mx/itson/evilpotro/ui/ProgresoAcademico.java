@@ -24,9 +24,9 @@ public class ProgresoAcademico extends javax.swing.JDialog {
     /**
      * Instantiates a new Progreso academico.
      *
-     * @param parent the parent 
-     * @param modal  the modal 
-     * @param id     the id es un numero entero asignado para el alumno 
+     * @param parent El padre
+     * @param modal  Si es modal o no
+     * @param id     El id del alumno
      * El matodo permite llenar los campos del dialog
      */
     public ProgresoAcademico(java.awt.Frame parent, boolean modal, int id) {
@@ -228,9 +228,9 @@ public class ProgresoAcademico extends javax.swing.JDialog {
     }//GEN-LAST:event_btnRegresarActionPerformed
 
     /**
-     * Main.
+     * Clase principal de la interfaz
      *
-     * @param args the args
+     * @param args Los argumentos de la línea de comandos.
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

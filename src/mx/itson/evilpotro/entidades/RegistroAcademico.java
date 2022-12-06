@@ -86,8 +86,8 @@ public class RegistroAcademico {
     /**
      * Calcular progreso double.
      *
-     * @param id the id es un numero entero asignado para el alumno 
-     * Este metodo obtiene el progreso total del alumno
+     * @param id the id es un número entero asignado para el alumno
+     * Este método obtiene el progreso total del alumno
      * @return the double
      */
     public static double calcularProgreso(int id) {
