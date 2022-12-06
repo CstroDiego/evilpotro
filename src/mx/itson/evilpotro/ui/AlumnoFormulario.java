@@ -10,21 +10,25 @@ import mx.itson.evilpotro.entidades.Alumno;
 import javax.swing.*;
 
 /**
- * The type Alumno formulario.
+ * Interfaz grafica de la clase Alumno para editar un registro
+ *
+ * @author Julio Blanco
+ * @author Alejandra Medina
+ * @author Diego Castro
  */
 public class AlumnoFormulario extends javax.swing.JDialog {
 
     /**
-     * The Id.
+     * El id del alumno
      */
     int id;
 
     /**
-     * Instantiates a new Alumno formulario.
+     * Inicializa los componentes de la interfaz grafica
      *
-     * @param parent the parent
-     * @param modal  the modal
-     * @param id     the id es un numero entero asignado para el alumno 
+     * @param parent El padre de la interfaz grafica
+     * @param modal Si la interfaz grafica es modal
+     * @param id Es un numero entero asignado para el alumno
      */
     public AlumnoFormulario(java.awt.Frame parent, boolean modal, int id) {
         super(parent, modal);
@@ -35,8 +39,7 @@ public class AlumnoFormulario extends javax.swing.JDialog {
     }
 
     /**
-     * Cargar formulario.
-     * Cargara los datos del alumno seleccionado
+     * Cargar formulario. Cargara los datos del alumno seleccionado
      */
     public void cargarFormulario() {
         System.out.println("Cargando formulario con id: " + id);
@@ -48,7 +51,7 @@ public class AlumnoFormulario extends javax.swing.JDialog {
                 txtEmail.setText(alumno.getEmail());
                 txtTelefono.setText(String.valueOf(alumno.getTelefono()));
                 txtCampus.setText(alumno.getCampus());
-                txtFechaNacimiento.setText(String.valueOf(alumno.getFechaNacimiento()));
+                txtfechaInscripcion.setText(String.valueOf(alumno.getFechaInscripcion()));
                 txtCarrera.setText(alumno.getCarrera());
             } catch (Exception e) {
                 System.out.println("Error: " + e.getMessage());
@@ -70,7 +73,7 @@ public class AlumnoFormulario extends javax.swing.JDialog {
         jLabel4 = new javax.swing.JLabel();
         btnGuardar = new javax.swing.JButton();
         txtCampus = new javax.swing.JTextField();
-        txtFechaNacimiento = new javax.swing.JTextField();
+        txtfechaInscripcion = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         txtCarrera = new javax.swing.JTextField();
@@ -81,8 +84,6 @@ public class AlumnoFormulario extends javax.swing.JDialog {
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        txtNombre.setOpaque(true);
         jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 190, -1));
         jPanel1.add(txtApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 120, 220, -1));
         jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 420, -1));
@@ -112,14 +113,14 @@ public class AlumnoFormulario extends javax.swing.JDialog {
         });
         jPanel1.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 320, -1, -1));
         jPanel1.add(txtCampus, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 210, -1));
-        jPanel1.add(txtFechaNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, 290, -1));
+        jPanel1.add(txtfechaInscripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, 290, -1));
 
         jLabel5.setForeground(new java.awt.Color(204, 0, 51));
         jLabel5.setText("Campus:");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, -1, -1));
 
         jLabel6.setForeground(new java.awt.Color(204, 0, 51));
-        jLabel6.setText("Fecha de nacimiento:");
+        jLabel6.setText("Fecha de inscripción:");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 200, -1, -1));
         jPanel1.add(txtCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 270, 190, -1));
 
@@ -134,12 +135,12 @@ public class AlumnoFormulario extends javax.swing.JDialog {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -152,10 +153,10 @@ public class AlumnoFormulario extends javax.swing.JDialog {
         String email = txtEmail.getText();
         Long telefono = Long.valueOf(txtTelefono.getText());
         String campus = txtCampus.getText();
-        String fechaNacimiento = txtFechaNacimiento.getText();
+        String fechaInscripcion = txtfechaInscripcion.getText();
         String carrera = txtCarrera.getText();
         try {
-            Alumno.editar(id, nombre, apellidos, email, telefono, campus, fechaNacimiento, carrera);
+            Alumno.editar(id, nombre, apellidos, email, telefono, campus, fechaInscripcion, carrera);
             JOptionPane.showMessageDialog(null, "Alumno editado correctamente");
             this.dispose();
         } catch (Exception e) {
@@ -166,9 +167,9 @@ public class AlumnoFormulario extends javax.swing.JDialog {
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     /**
-     * Main.
+     * Clase principal
      *
-     * @param args the args
+     * @param args Los argumentos de la línea de comandos
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -225,8 +226,8 @@ public class AlumnoFormulario extends javax.swing.JDialog {
     private javax.swing.JTextField txtCampus;
     private javax.swing.JTextField txtCarrera;
     private javax.swing.JTextField txtEmail;
-    private javax.swing.JTextField txtFechaNacimiento;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtTelefono;
+    private javax.swing.JTextField txtfechaInscripcion;
     // End of variables declaration//GEN-END:variables
 }

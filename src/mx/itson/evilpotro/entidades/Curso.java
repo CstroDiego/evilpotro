@@ -10,7 +10,11 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 
 /**
- * The type Curso.
+ * Contiene los metodos y atributos de la clase Curso
+ *
+ * @author Julio Blanco
+ * @author Alejandra Medina
+ * @author Diego Castro
  */
 public class Curso {
 
@@ -21,11 +25,11 @@ public class Curso {
     private String carrera;
 
     /**
-     * Obtener por id curso.
+     * Obtiene un registro de curso por su id
      *
-     * @param id the id es un numero entero asignado para el alumno 
-     * Este metodo obtendra los datos relacionados con el progreso academico del alumno
-     * @return the curso
+     * @param id El id del curso
+     *
+     * @return El registro obtenido con el id especificado.
      */
     public static Curso obtenerPorId(int id) {
         Curso curso = new Curso();
@@ -50,11 +54,11 @@ public class Curso {
     }
 
     /**
-     * Obtener total materias int.
+     * Obtiene el total de materias registradas en la base de datos que coincidan con la carrera especificada.
      *
-     * @param carrera the carrera es una cadena de texto que dara todad las materias
-     * Este metod obtendra las materias que tiene el curso
-     * @return the int
+     * @param carrera La carrera de la que se quieren obtener el total de las materias registradas.
+     *
+     * @return El total de materias encontradas
      */
     public static int obtenerTotalMaterias(String carrera) {
         int totalMaterias = 0;
@@ -75,90 +79,90 @@ public class Curso {
     }
 
     /**
-     * Gets id.
+     * Obtiene el valor del atributo id
      *
-     * @return the id
+     * @return El valor del atributo id
      */
     public int getId() {
         return id;
     }
 
     /**
-     * Sets id.
+     * Establece el valor del atributo id
      *
-     * @param id the id
+     * @param id El valor a establecer
      */
     public void setId(int id) {
         this.id = id;
     }
 
     /**
-     * Gets titulo.
+     * Obtiene el valor del atributo titulo
      *
-     * @return the titulo
+     * @return El valor del atributo titulo
      */
     public String getTitulo() {
         return titulo;
     }
 
     /**
-     * Sets titulo.
+     * Establece el valor del atributo titulo
      *
-     * @param titulo the titulo
+     * @param titulo El valor a establecer
      */
     public void setTitulo(String titulo) {
         this.titulo = titulo;
     }
 
     /**
-     * Gets semestre.
+     * Obtiene el valor del atributo semestre
      *
-     * @return the semestre
+     * @return El valor del atributo semestre
      */
     public int getSemestre() {
         return semestre;
     }
 
     /**
-     * Sets semestre.
+     * Establece el valor del atributo semestre
      *
-     * @param semestre the semestre
+     * @param semestre El valor a establecer
      */
     public void setSemestre(int semestre) {
         this.semestre = semestre;
     }
 
     /**
-     * Gets bloque.
+     * Obtiene el valor del atributo bloque
      *
-     * @return the bloque
+     * @return El valor del atributo bloque
      */
     public String getBloque() {
         return bloque;
     }
 
     /**
-     * Sets bloque.
+     * Establece el valor del atributo bloque
      *
-     * @param bloque the bloque
+     * @param bloque El valor a establecer
      */
     public void setBloque(String bloque) {
         this.bloque = bloque;
     }
 
     /**
-     * Gets carrera.
+     * Obtiene el valor del atributo carrera
      *
-     * @return the carrera
+     * @return El valor del atributo carrera
      */
     public String getCarrera() {
         return carrera;
     }
 
     /**
-     * Sets carrera.
+     * Establece el valor del atributo carrera
      *
-     * @param carrera the carrera
+     * @param carrera El valor a establecer
      */
     public void setCarrera(String carrera) {
         this.carrera = carrera;

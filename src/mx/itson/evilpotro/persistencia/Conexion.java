@@ -4,14 +4,18 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 /**
- * The type Conexion.
+ * Inicializa la conexion con la base de datos
+ *
+ * @author Julio Blanco
+ * @author Alejandra Medina
+ * @author Diego Castro
  */
 public class Conexion {
 
     /**
-     * Obtener connection.
      * Este metodo genera una conexion de la base de datos y java
-     * @return the connection
+     *
+     * @return la conexion establecida con la base de datos
      */
     public static Connection obtener() {
         Connection conexion = null;

@@ -12,22 +12,25 @@ import javax.swing.table.DefaultTableModel;
 import java.util.List;
 
 /**
- * The type Progreso academico.
+ * Interfaz grafica para consultar el progreso academico de un alumno
+ *
+ * @author Julio Blanco
+ * @author Alejandra Medina
+ * @author Diego Castro
  */
 public class ProgresoAcademico extends javax.swing.JDialog {
 
     /**
-     * The Id.
+     * El id del alumno
      */
     int id;
 
     /**
-     * Instantiates a new Progreso academico.
+     * Inicializa los componentes de la interfaz
      *
      * @param parent El padre
-     * @param modal  Si es modal o no
-     * @param id     El id del alumno
-     * El matodo permite llenar los campos del dialog
+     * @param modal Si es modal o no
+     * @param id El id del alumno El matodo permite llenar los campos del dialog
      */
     public ProgresoAcademico(java.awt.Frame parent, boolean modal, int id) {
         super(parent, modal);
@@ -37,8 +40,7 @@ public class ProgresoAcademico extends javax.swing.JDialog {
     }
 
     /**
-     * Cargar campos.
-     *  Obtendra la informacion para los campos del dialog
+     * Cargar campos. Obtendra la informacion para los campos del dialog
      */
     public void cargarCampos() {
         System.out.println("Hola");
@@ -49,7 +51,7 @@ public class ProgresoAcademico extends javax.swing.JDialog {
                 lblEmail.setText(alumno.getEmail());
                 lblTelefono.setText(String.valueOf(alumno.getTelefono()));
                 lblCampus.setText(alumno.getCampus());
-                lblFechaNacimiento.setText(String.valueOf(alumno.getFechaNacimiento()));
+                lblfechaInscripcion.setText(String.valueOf(alumno.getFechaInscripcion()));
                 lblCarrera.setText(alumno.getCarrera());
                 lblPromedio.setText(String.valueOf(RegistroAcademico.calcularPromedio(id)));
                 lblProgreso.setText(String.valueOf(RegistroAcademico.calcularProgreso(id)));
@@ -60,9 +62,9 @@ public class ProgresoAcademico extends javax.swing.JDialog {
                 modelo.setRowCount(0);
                 for (RegistroAcademico registro : registrosAcademicos) {
                     modelo.addRow(new Object[]{
-                            registro.getCurso().getSemestre(),
-                            registro.getCurso().getTitulo(),
-                            registro.getCalificacion(),});
+                        registro.getCurso().getSemestre(),
+                        registro.getCurso().getTitulo(),
+                        registro.getCalificacion(),});
                 }
             } catch (Exception e) {
                 System.out.println("Error: " + e.getMessage());
@@ -91,7 +93,7 @@ public class ProgresoAcademico extends javax.swing.JDialog {
         jLabel3 = new javax.swing.JLabel();
         lblEmail = new javax.swing.JLabel();
         lblNombre1 = new javax.swing.JLabel();
-        lblFechaNacimiento = new javax.swing.JLabel();
+        lblfechaInscripcion = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         lblCampus = new javax.swing.JLabel();
         lblNombre2 = new javax.swing.JLabel();
@@ -107,15 +109,15 @@ public class ProgresoAcademico extends javax.swing.JDialog {
 
         tblMaterias.setAutoCreateRowSorter(true);
         tblMaterias.setModel(new javax.swing.table.DefaultTableModel(
-                new Object[][]{
-                        {null, null, null},
-                        {null, null, null},
-                        {null, null, null},
-                        {null, null, null}
-                },
-                new String[]{
-                        "Semestre", "Materia", "Calificación"
-                }
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Semestre", "Materia", "Calificación"
+            }
         ));
         jScrollPane1.setViewportView(tblMaterias);
 
@@ -179,12 +181,12 @@ public class ProgresoAcademico extends javax.swing.JDialog {
 
         lblNombre1.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         lblNombre1.setForeground(new java.awt.Color(255, 0, 0));
-        lblNombre1.setText("Fecha de inscripcion:");
+        lblNombre1.setText("Fecha de inscripción:");
         jPanel1.add(lblNombre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 80, -1, -1));
 
-        lblFechaNacimiento.setForeground(new java.awt.Color(255, 0, 0));
-        lblFechaNacimiento.setText("2022-15-21");
-        jPanel1.add(lblFechaNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 80, 90, -1));
+        lblfechaInscripcion.setForeground(new java.awt.Color(255, 0, 0));
+        lblfechaInscripcion.setText("2022-15-21");
+        jPanel1.add(lblfechaInscripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 80, 90, -1));
 
         jLabel8.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 0, 0));
@@ -286,7 +288,6 @@ public class ProgresoAcademico extends javax.swing.JDialog {
     private javax.swing.JLabel lblCampus;
     private javax.swing.JLabel lblCarrera;
     private javax.swing.JLabel lblEmail;
-    private javax.swing.JLabel lblFechaNacimiento;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblNombre1;
     private javax.swing.JLabel lblNombre2;
@@ -294,6 +295,7 @@ public class ProgresoAcademico extends javax.swing.JDialog {
     private javax.swing.JLabel lblPromedio;
     private javax.swing.JLabel lblReprobadas;
     private javax.swing.JLabel lblTelefono;
+    private javax.swing.JLabel lblfechaInscripcion;
     private javax.swing.JTable tblMaterias;
     // End of variables declaration//GEN-END:variables
 }

@@ -11,8 +11,11 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * The type Alumno.
- * 
+ * Contiene los metos y atributos de la clase Alumno
+ *
+ * @author Julio Blanco
+ * @author Alejandra Medina
+ * @author Diego Castro
  */
 public class Alumno {
 
@@ -22,13 +25,13 @@ public class Alumno {
     private String email;
     private Long telefono;
     private String campus;
-    private Date fechaNacimiento;
+    private Date fechaInscripcion;
     private String carrera;
 
     /**
-     * Obtener todos list.
-     * Este metodo se encarga de obtener todos los datos de la base de datos
-     * @return the list
+     * Crea una lista de alumnos con todos los registros de la base de datos
+     *
+     * @return La lista de alumnos
      */
     public static List<Alumno> obtenerTodos() {
         List<Alumno> alumnos = new ArrayList<>();
@@ -45,7 +48,7 @@ public class Alumno {
                 alumno.setEmail(resultSet.getString("email"));
                 alumno.setTelefono(resultSet.getLong("telefono"));
                 alumno.setCampus(resultSet.getString("campus"));
-                alumno.setFechaNacimiento(resultSet.getDate("fechaNacimiento"));
+                alumno.setFechaInscripcion(resultSet.getDate("fechaInscripcion"));
                 alumno.setCarrera(resultSet.getString("carrera"));
                 alumnos.add(alumno);
             }
@@ -58,10 +61,11 @@ public class Alumno {
 
     /**
      * Obtener por id alumno.
-     * 
-     * @param id the id es el numero asignado para el alumno
-     * Este metodo obtendra todos los datos del alumno seleccionado
-     * @return the alumno
+     *
+     * @param id the id es el numero asignado para el alumno Este metodo obtendra todos los datos del alumno
+     *           seleccionado
+     *
+     * @return El alumno encontrado
      */
     public static Alumno obtenerPorId(int id) {
         Alumno alumno = new Alumno();
@@ -77,7 +81,7 @@ public class Alumno {
                 alumno.setEmail(resultSet.getString("email"));
                 alumno.setTelefono(resultSet.getLong("telefono"));
                 alumno.setCampus(resultSet.getString("campus"));
-                alumno.setFechaNacimiento(resultSet.getDate("fechaNacimiento"));
+                alumno.setFechaInscripcion(resultSet.getDate("fechaInscripcion"));
                 alumno.setCarrera(resultSet.getString("carrera"));
             }
             conexion.close();
@@ -88,31 +92,31 @@ public class Alumno {
     }
 
     /**
-     * Editar boolean.
+     * Actualiza los registros de un alumno con base en su id
      *
-     * @param id              the id es un numero entero asignado para el alumno 
-     * @param nombre          the nombre es una cadena de texto con el nombre del alumno
-     * @param apellidos       the apellidos es una cadena de texto con el apellido del alumno
-     * @param email           the email es una cadena de texto con el email del alumno
-     * @param telefono        the telefono es un tipo de dato entero que dara el telefono del alumno 
-     * @param campus          the campus es una cadena de texto que dara el nombre del campus
-     * @param fechaNacimiento the fecha nacimiento es una cadena de texto que dara la fecha de nacimiento del alumno
-     * @param carrera         the carrera es una cadena de texto que dara el nombre de la carrera que cursa el alumno
-     * Este metodo obtendra todos los datos del alumno seleccionado
-     * @return the boolean
+     * @param id              id es un numero entero asignado para el alumno
+     * @param nombre          nombre es una cadena de texto con el nombre del alumno
+     * @param apellidos       apellidos es una cadena de texto con el apellido del alumno
+     * @param email           email es una cadena de texto con el email del alumno
+     * @param telefono        telefono es un tipo de dato entero que dara el telefono del alumno
+     * @param campus          campus es una cadena de texto que dara el nombre del campus
+     * @param fechaInscripcion fecha nacimiento es una cadena de texto que dara la fecha de nacimiento del alumno
+     * @param carrera         carrera es una cadena de texto que dara el nombre de la carrera que cursa el alumno
+     *
+     * @return true si se actualizo correctamente, false si no
      */
-    public static boolean editar(int id, String nombre, String apellidos, String email, Long telefono, String campus, String fechaNacimiento, String carrera) {
+    public static boolean editar(int id, String nombre, String apellidos, String email, Long telefono, String campus, String fechaInscripcion, String carrera) {
         boolean resultado = false;
         try {
             Connection conexion = Conexion.obtener();
-            String consulta = "UPDATE alumno SET nombre = ?, apellidos = ?, email = ?, telefono = ?, campus = ?, fechaNacimiento = ?, carrera = ? WHERE id = ?";
+            String consulta = "UPDATE alumno SET nombre = ?, apellidos = ?, email = ?, telefono = ?, campus = ?, fechaInscripcion = ?, carrera = ? WHERE id = ?";
             PreparedStatement statement = conexion.prepareStatement(consulta);
             statement.setString(1, nombre);
             statement.setString(2, apellidos);
             statement.setString(3, email);
             statement.setLong(4, telefono);
             statement.setString(5, campus);
-            statement.setString(6, fechaNacimiento);
+            statement.setString(6, fechaInscripcion);
             statement.setString(7, carrera);
             statement.setInt(8, id);
             statement.execute();
@@ -127,11 +131,11 @@ public class Alumno {
     }
 
     /**
-     * Obtener carrera string.
+     * Obtiene la carrera del alumno con base en su id
      *
-     * @param id the id es un numero entero asignado para el alumno  
-     * Este metodo obtendra la carrera del alumno
-     * @return the string
+     * @param id id es un numero entero asignado para el alumno Este metodo obtendra la carrera del alumno
+     *
+     * @return La carrera del alumno
      */
     public static String obtenerCarrera(int id) {
         String carrera = "";
@@ -152,144 +156,144 @@ public class Alumno {
     }
 
     /**
-     * Gets id.
+     * Obtiene el campus del alumno con base en su id
      *
-     * @return the id
+     * @return El campus del alumno
      */
     public int getId() {
         return id;
     }
 
     /**
-     * Sets id.
+     * Obtiene el nombre del alumno con base en su id
      *
-     * @param id the id
+     * @param id El valor a asignar a id
      */
     public void setId(int id) {
         this.id = id;
     }
 
     /**
-     * Gets nombre.
+     * Obtiene el nombre del alumno
      *
-     * @return the nombre
+     * @return El nombre del alumno
      */
     public String getNombre() {
         return nombre;
     }
 
     /**
-     * Sets nombre.
+     * Asigna el valor del nombre del alumno
      *
-     * @param nombre the nombre
+     * @param nombre El valor a asignar a nombre
      */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
     /**
-     * Gets apellidos.
+     * Obtiene el apellido del alumno
      *
-     * @return the apellidos
+     * @return El valor de apellidos
      */
     public String getApellidos() {
         return apellidos;
     }
 
     /**
-     * Sets apellidos.
+     * Asigna el valor del apellido del alumno
      *
-     * @param apellidos the apellidos
+     * @param apellidos El valor a asignar a apellidos
      */
     public void setApellidos(String apellidos) {
         this.apellidos = apellidos;
     }
 
     /**
-     * Gets email.
+     * Obtiene el email del alumno
      *
-     * @return the email
+     * @return El valor de email
      */
     public String getEmail() {
         return email;
     }
 
     /**
-     * Sets email.
+     * Asigna el valor del email del alumno
      *
-     * @param email the email
+     * @param email El valor a asignar a email
      */
     public void setEmail(String email) {
         this.email = email;
     }
 
     /**
-     * Gets telefono.
+     * Obtiene el telefono del alumno
      *
-     * @return the telefono
+     * @return El valor de telefono
      */
     public long getTelefono() {
         return telefono;
     }
 
     /**
-     * Sets telefono.
+     * Asigna el valor del telefono del alumno
      *
-     * @param telefono the telefono
+     * @param telefono El valor a asignar a telefono
      */
     public void setTelefono(long telefono) {
         this.telefono = telefono;
     }
 
     /**
-     * Gets campus.
+     * Obtiene el campus del alumno
      *
-     * @return the campus
+     * @return El valor de campus
      */
     public String getCampus() {
         return campus;
     }
 
     /**
-     * Sets campus.
+     * Asigna el valor del campus del alumno
      *
-     * @param campus the campus
+     * @param campus El valor a asignar a campus
      */
     public void setCampus(String campus) {
         this.campus = campus;
     }
 
     /**
-     * Gets fecha nacimiento.
+     * Obtiene la fecha de nacimiento del alumno
      *
-     * @return the fecha nacimiento
+     * @return El valor de fechaInscripcion
      */
-    public Date getFechaNacimiento() {
-        return fechaNacimiento;
+    public Date getFechaInscripcion() {
+        return fechaInscripcion;
     }
 
     /**
-     * Sets fecha nacimiento.
+     * Asigna el valor de la fecha de nacimiento del alumno
      *
-     * @param fechaNacimiento the fecha nacimiento
+     * @param fechaInscripcion El valor a asignar a fechaInscripcion
      */
-    public void setFechaNacimiento(Date fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
+    public void setFechaInscripcion(Date fechaInscripcion) {
+        this.fechaInscripcion = fechaInscripcion;
     }
 
     /**
-     * Gets carrera.
+     * Obtiene la carrera del alumno
      *
-     * @return the carrera
+     * @return El valor de carrera
      */
     public String getCarrera() {
         return carrera;
     }
 
     /**
-     * Sets carrera.
+     * Asigna el valor de la carrera del alumno
      *
-     * @param carrera the carrera
+     * @param carrera El valor a asignar a carrera
      */
     public void setCarrera(String carrera) {
         this.carrera = carrera;

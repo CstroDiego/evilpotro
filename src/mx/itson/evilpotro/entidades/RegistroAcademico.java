@@ -9,11 +9,16 @@ import mx.itson.evilpotro.persistencia.Conexion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * The type Registro academico.
+ * Contiene los metodos y atributos de la clase Curso
+ *
+ * @author Julio Blanco
+ * @author Alejandra Medina
+ * @author Diego Castro
  */
 public class RegistroAcademico {
 
@@ -23,11 +28,12 @@ public class RegistroAcademico {
     private String cicloLectivo;
 
     /**
-     * Obtener clases por id list.
+     * Obtiene un registro de curso por su id
      *
-     * @param id the id es un numero entero asignado para el alumno 
-     * Este metodo obtendra los datos del alumno relacionados con su progreso academico
-     * @return the list
+     * @param id Es un numero entero asignado para el alumno Este metodo obtendra los datos del alumno relacionados con
+     *           su progreso academico
+     *
+     * @return La lista de registros obtenidos con el id especificado.
      */
     public static List<RegistroAcademico> obtenerClasesPorId(int id) {
         List<RegistroAcademico> registrosAcademicos = new ArrayList<>();
@@ -53,16 +59,17 @@ public class RegistroAcademico {
     }
 
     /**
-     * Calcular promedio double.
+     * Calcula el promedio de un alumno.
      *
-     * @param id the id es un numero entero asignado para el alumno 
-     * Este metodo obtiene el promedio del alumno
-     * @return the double
+     * @param id Es un numero entero asignado para el alumno Este metodo obtiene el promedio del alumno
+     *
+     * @return El promedio del alumno.
      */
     public static double calcularPromedio(int id) {
         double promedio = 0;
         double suma = 0;
         double contador = 0;
+        DecimalFormat df = new DecimalFormat("#.00");
         try {
             Connection conexion = Conexion.obtener();
             String consulta = "SELECT calificacion FROM registroAcademico WHERE idAlumno = ?";
@@ -80,15 +87,15 @@ public class RegistroAcademico {
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
         }
-        return promedio;
+        return Double.parseDouble(df.format(promedio));
     }
 
     /**
-     * Calcular progreso double.
+     * Calcula el progreso academico de un alumno
      *
-     * @param id the id es un número entero asignado para el alumno
-     * Este método obtiene el progreso total del alumno
-     * @return the double
+     * @param id Es un número entero asignado para el alumno Este método obtiene el progreso total del alumno
+     *
+     * @return El progreso total del alumno.
      */
     public static double calcularProgreso(int id) {
         double progreso = 0;
@@ -114,11 +121,11 @@ public class RegistroAcademico {
     }
 
     /**
-     * Calcular reprobadas int.
+     * Calcula la cantidad de materias reprobadas de un alumno
      *
-     * @param id the id es un numero entero asignado para el alumno 
-     * Este metodo obtiene el total de reprobadas
-     * @return the int
+     * @param id Es un numero entero asignado para el alumno Este metodo obtiene el total de reprobadas
+     *
+     * @return El total de reprobadas del alumno.
      */
     public static int calcularReprobadas(int id) {
         int reprobadas = 0;
@@ -141,76 +148,74 @@ public class RegistroAcademico {
     }
 
     /**
-     * Gets alumno.
+     * Obtiene el valor del atributo alumno
      *
-     * @return the alumno
+     * @return El valor del atributo alumno
      */
     public Alumno getAlumno() {
         return alumno;
     }
 
     /**
-     * Sets alumno.
+     * Asigna un valor al atributo alumno
      *
-     * @param alumno the alumno
+     * @param alumno Es un objeto de tipo Alumno
      */
     public void setAlumno(Alumno alumno) {
         this.alumno = alumno;
     }
 
     /**
-     * Gets curso.
+     * Obtiene el valor del atributo curso
      *
-     * @return the curso
+     * @return El valor del atributo curso
      */
     public Curso getCurso() {
         return curso;
     }
 
     /**
-     * Sets curso.
+     * Asigna un valor al atributo curso
      *
-     * @param curso the curso
+     * @param curso Es un objeto de tipo Curso
      */
     public void setCurso(Curso curso) {
         this.curso = curso;
     }
 
     /**
-     * Gets calificacion.
+     * Obtiene el valor del atributo calificacion
      *
-     * @return the calificacion
+     * @return El valor del atributo calificacion
      */
     public int getCalificacion() {
         return calificacion;
     }
 
     /**
-     * Sets calificacion.
+     * Asigna un valor al atributo calificacion
      *
-     * @param calificacion the calificacion
+     * @param calificacion El valor del atributo calificacion
      */
     public void setCalificacion(int calificacion) {
         this.calificacion = calificacion;
     }
 
     /**
-     * Gets ciclo lectivo.
+     * Obtiene el valor del atributo cicloLectivo
      *
-     * @return the ciclo lectivo
+     * @return El valor del atributo cicloLectivo
      */
     public String getCicloLectivo() {
         return cicloLectivo;
     }
 
     /**
-     * Sets ciclo lectivo.
+     * Asigna un valor al atributo cicloLectivo
      *
-     * @param cicloLectivo the ciclo lectivo
+     * @param cicloLectivo El valor del atributo cicloLectivo
      */
     public void setCicloLectivo(String cicloLectivo) {
         this.cicloLectivo = cicloLectivo;
     }
-
-
 }

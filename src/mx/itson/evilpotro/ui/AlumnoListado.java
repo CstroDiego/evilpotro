@@ -11,19 +11,22 @@ import javax.swing.table.DefaultTableModel;
 import java.util.List;
 
 /**
- * The type Alumno listado.
+ * Interfaz grafica principal de la aplicacion
+ *
+ * @author Julio Blanco
+ * @author Alejandra Medina
+ * @author Diego Castro
  */
 public class AlumnoListado extends javax.swing.JFrame {
 
     /**
-     * Instantiates a new Alumno listado.
+     * Inicializa los componentes de la interfaz
      */
     public AlumnoListado() {
         initComponents();
     }
 
     /**
-     * Cargar.
      * Cargara los datos de la base de datos en los campos correspondientes
      */
     public void cargar() {
@@ -32,14 +35,14 @@ public class AlumnoListado extends javax.swing.JFrame {
         modelo.setRowCount(0);
         for (Alumno alumno : alumnos) {
             modelo.addRow(new Object[]{
-                    alumno.getId(),
-                    alumno.getNombre(),
-                    alumno.getApellidos(),
-                    alumno.getEmail(),
-                    alumno.getTelefono(),
-                    alumno.getCampus(),
-                    alumno.getFechaNacimiento(),
-                    alumno.getCarrera()
+                alumno.getId(),
+                alumno.getNombre(),
+                alumno.getApellidos(),
+                alumno.getEmail(),
+                alumno.getTelefono(),
+                alumno.getCampus(),
+                alumno.getFechaInscripcion(),
+                alumno.getCarrera()
             });
         }
     }
@@ -70,17 +73,29 @@ public class AlumnoListado extends javax.swing.JFrame {
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 10, -1, -1));
 
         tblAlumnos.setModel(new javax.swing.table.DefaultTableModel(
-                new Object[][]{
-                        {null, null, null, null, null, null, null, null},
-                        {null, null, null, null, null, null, null, null},
-                        {null, null, null, null, null, null, null, null},
-                        {null, null, null, null, null, null, null, null}
-                },
-                new String[]{
-                        "ID", "Nombre", "Apellodos", "Email", "Telefono", "Campus", "Fecha de nacimiento", "Carrera"
-                }
-        ));
+            new Object [][] {
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "ID", "Nombre", "Apellodos", "Email", "Telefono", "Campus", "Fecha de inscripción", "Carrera"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, true, true, true, true, true, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tblAlumnos);
+        if (tblAlumnos.getColumnModel().getColumnCount() > 0) {
+            tblAlumnos.getColumnModel().getColumn(0).setResizable(false);
+            tblAlumnos.getColumnModel().getColumn(0).setPreferredWidth(0);
+        }
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 870, 281));
 
@@ -109,12 +124,12 @@ public class AlumnoListado extends javax.swing.JFrame {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 890, Short.MAX_VALUE)
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 890, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -131,6 +146,9 @@ public class AlumnoListado extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         cargar();
+        tblAlumnos.getColumnModel().getColumn(0).setPreferredWidth(0);
+        tblAlumnos.getColumnModel().getColumn(0).setMinWidth(0);
+        tblAlumnos.getColumnModel().getColumn(0).setMaxWidth(0);
     }//GEN-LAST:event_formWindowOpened
 
     private void btnProgresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProgresoActionPerformed
@@ -141,9 +159,9 @@ public class AlumnoListado extends javax.swing.JFrame {
     }//GEN-LAST:event_btnProgresoActionPerformed
 
     /**
-     * Main.
+     * Metodo principal
      *
-     * @param args the args
+     * @param args Los argumentos de la linea de comandos
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
